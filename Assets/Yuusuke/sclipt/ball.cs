@@ -39,7 +39,7 @@ public class Ball : MonoBehaviour
         //if(_isLeftFire)
         //{
             v = v2 * _ballSpead;
-        Debug.Log(_cannon.BallPoint[_randomPoint].position);
+            Debug.Log(_cannon.BallPoint[_randomPoint].position);
         //}
         //else
         //{
