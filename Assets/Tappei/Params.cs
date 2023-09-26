@@ -10,6 +10,10 @@ public class Params : MonoBehaviour
     [SerializeField] float _roadMoveSpeed = 1.0f;
     [Header("車のレーン間の移動速度")]
     [SerializeField] float _laneStepSpeed = 1.0f;
+    [Header("ゲーム時間")]
+    [SerializeField] float _timeLimit = 60.0f;
+    [Header("イベントが起こる間隔")]
+    [SerializeField] float _eventRate = 2.0f;
     [Header("絵具の炸裂範囲")]
     [SerializeField] float _paintExplosionRange = 3.0f;
     [Header("スタン時間")]
@@ -19,6 +23,8 @@ public class Params : MonoBehaviour
     public static float LaneStepSpeed => _instance._laneStepSpeed;
     public static float PaintExplosionRange => _instance._paintExplosionRange;
     public static float StunTime => _instance._stunTime;
+    public static float TimeLimit => _instance._timeLimit;
+    public static float EventRate => _instance._eventRate;
 
     void Awake()
     {
