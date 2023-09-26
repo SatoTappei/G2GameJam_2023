@@ -13,15 +13,15 @@ public class BackGroundScroll : MonoBehaviour
     SpriteRenderer _backGroundSpriteCloneClone;
     /// <summary>初期座標</summary>
     float _startPosition;
-    //調整用
-    [SerializeField]
-    [Range(1, 3)]
+    [Header("以下調整用")]
+    [SerializeField][Range(1, 3)]
     int _gear;
     [Header("ギア別速度調整")]
     [SerializeField] int _gearOne;
     [SerializeField] int _gearTwo;
     [SerializeField] int _gearThree;
 
+    public float ScrollSpeed => _scrollSpeed;
     void Start()
     {
         //最初の位置
