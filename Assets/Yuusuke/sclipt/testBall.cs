@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class Ball : MonoBehaviour
+public class testBall : MonoBehaviour
 {
     [SerializeField, Header("ボールのスピード")] float _ballSpead;
     [SerializeField, Header("大砲のプレハブ")] cannon _cannon;
@@ -27,13 +27,12 @@ public class Ball : MonoBehaviour
     void Update()
     {
         //_startPosから_ballPoint[_random].positionまで行く。_nowPosで目標地点までを％で表す
-        transform.position = Vector3.Lerp(_startPos,_ballPoint[_random].position , _nowPos);
+        transform.position = Vector3.Lerp(_startPos, _ballPoint[_random].position, _nowPos);
         _nowPos += Time.deltaTime;
         _nowPos = Mathf.Clamp01(_nowPos);
+
         if (this.transform.position == _ballPoint[_random].position)
         {
-            GameObject effect = Instantiate(_effect, this.transform.position, transform.rotation);
-            Destroy(effect, _effectTime);
             Destroy(gameObject);
         }
     }
