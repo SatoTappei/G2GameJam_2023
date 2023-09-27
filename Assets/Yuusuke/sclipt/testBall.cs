@@ -33,6 +33,8 @@ public class testBall : MonoBehaviour
 
         if (this.transform.position == _ballPoint[_random].position)
         {
+            GameObject effect = Instantiate(_effect, this.transform.position, transform.rotation);
+            Destroy(effect, _effectTime);
             Destroy(gameObject);
         }
     }
