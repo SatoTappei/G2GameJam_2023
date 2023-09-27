@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 7688469985355306171}
   - component: {fileID: 357419634975791294}
   - component: {fileID: -7850187022628258775}
-  - component: {fileID: 5229266006190602981}
   m_Layer: 0
   m_Name: ColorBall
   m_TagString: Untagged
@@ -136,31 +135,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _ballSpead: 5
   _cannon: {fileID: 8425332238440626521, guid: 3cfceff4ff0d4af4aa002118d8fdcdae, type: 3}
-  _cannonObject: {fileID: 2717854977814352198, guid: 3cfceff4ff0d4af4aa002118d8fdcdae, type: 3}
---- !u!50 &5229266006190602981
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5245323576206008387}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 0
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
+  _ballPoint:
+  - {fileID: 6798284686223403134, guid: 1e5f49aef95fffd48a603f0c03e62f01, type: 3}
+  - {fileID: 832879214905806917, guid: d9d06c24a80f4bc4aac468d10af01759, type: 3}
+  - {fileID: 4424849662682412718, guid: a4b1d3c86ad75444c815b96313684fb5, type: 3}
