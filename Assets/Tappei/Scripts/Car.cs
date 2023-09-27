@@ -17,21 +17,24 @@ public class Car : MonoBehaviour, IDamageable
     int _gear = 1;
     int _damage;
     bool _isValid;
-    bool _isGoal;
+    bool _isDead;
 
     bool ArrivalLane => _lerpProgress >= 1;
-    public bool IsGoal => _isGoal;
+
+    public bool IsDead => _damage == 3;
 
     void OnEnable()
     {
         MainLogic.OnGameStart += () => _isValid = true;
         MainLogic.OnGameClear += () => _isValid = false;
+        MainLogic.OnGameOver += () => _isValid = false;
     }
 
     void OnDisable()
     {
         MainLogic.OnGameStart -= () => _isValid = true;
         MainLogic.OnGameClear -= () => _isValid = false;
+        MainLogic.OnGameOver += () => _isValid = false;
     }
 
     void Start()
@@ -109,6 +112,8 @@ public class Car : MonoBehaviour, IDamageable
 
     void IDamageable.Damage(GameObject item)
     {
+        if (_isDead) return;
+
         // TODO:時間があれば別の判別方法に直す
         if (item.TryGetComponent(out ColorBall _))
         {
@@ -130,12 +135,6 @@ public class Car : MonoBehaviour, IDamageable
 
         _gearView.Change(_gear);
         _damageView.Condition(_damage);
-        _scroll.GearChange(_gear);
-    }
-
-    void OnTriggerEnter2D(Collider2D collision)
-    {
-        // ゴールしたフラグを立てる
-        if (collision.CompareTag("Finish")) _isGoal = true;
+        _scroll.Gear = _gear;
     }
 }
