@@ -43,6 +43,7 @@ GameObject:
   - component: {fileID: 5803426925658465827}
   - component: {fileID: 158026653567056190}
   - component: {fileID: 3385868308600286687}
+  - component: {fileID: 4510327749787182072}
   m_Layer: 0
   m_Name: TestCannon
   m_TagString: Untagged
@@ -178,3 +179,30 @@ MonoBehaviour:
   _muzzle: {fileID: 6840495006962455179}
   _colorBall:
   - {fileID: 8924396716337314060, guid: 71b06258a4ae3b74991a926250ea341f, type: 3}
+--- !u!50 &4510327749787182072
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2717854977814352198}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
