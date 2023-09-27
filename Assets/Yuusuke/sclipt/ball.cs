@@ -1,54 +1,31 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.Mathematics;
+using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.UIElements;
 
-[RequireComponent(typeof(Rigidbody2D))]
 public class Ball : MonoBehaviour
 {
-    //Rigidbody2D rb;
     [SerializeField, Header("ボールのスピード")] float _ballSpead;
-    [SerializeField] Cannon _cannon;
-    [SerializeField] GameObject _cannonObject;
+    [SerializeField] cannon _cannon;
+    [SerializeField, Header("ボールの到達地点")] Transform[] _ballPoint;
 
-    bool _isLeftFire;
-
-    int _randomPoint = 0;
+    Vector3 _startPos;
     float _nowPos;
-    Vector3 _startPosi;
-    Vector2 v;
-    Vector3 v2;
-    Rigidbody2D rb;
+    int _random;
+
+
     void Start()
     {
-        //_startPosi = this.transform.position;
-
-        _randomPoint = UnityEngine.Random.Range(0, _cannon.BallPoint.Length);
-        rb = GetComponent<Rigidbody2D>();
-        v2 = (_cannonObject.transform.position - _cannon.BallPoint[_randomPoint].position).normalized;
+        _startPos = this.transform.position;
+        _random = Random.Range(0, _ballPoint.Length);
     }
 
     void Update()
     {
-        //transform.position = Vector3.Lerp(_startPosi, _cannon.BallPoint[_randomPoint].position, _nowPos);
-        //Debug.Log(_cannon.BallPoint[_randomPoint].position);
-        //_nowPos += Time.deltaTime;
-        //_nowPos = Mathf.Clamp01(_nowPos);
-
-        //if(_isLeftFire)
-        //{
-            v = v2 * _ballSpead;
-            Debug.Log(_cannon.BallPoint[_randomPoint].position);
-        //}
-        //else
-        //{
-            //v = v2 * _ballSpead;
-        //}
-        
-       
-
-        rb.velocity = v;
+        transform.position = Vector3.Lerp(_startPos,_ballPoint[_random].position , _nowPos);
+        Debug.Log(_ballPoint[_random].position);
+        _nowPos += Time.deltaTime;
+        _nowPos = Mathf.Clamp01(_nowPos);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -57,15 +34,5 @@ public class Ball : MonoBehaviour
         {
             Destroy(gameObject);
         }
-
-        if (collision.CompareTag($"point{_randomPoint + 1}"))
-        {
-            Destroy(gameObject);
-        }
-    }
-
-    public void SetIsLeftFire(bool isLeftFire)
-    {
-        this._isLeftFire = isLeftFire;
     }
 }
