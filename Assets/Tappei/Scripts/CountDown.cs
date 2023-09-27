@@ -4,26 +4,35 @@ using UnityEngine.UI;
 
 public class CountDown : MonoBehaviour
 {
-    [SerializeField] Text _text;
+    [SerializeField] GameObject _three;
+    [SerializeField] GameObject _two;
+    [SerializeField] GameObject _one;
+    [SerializeField] GameObject _go;
+
 
     void Awake()
     {
-        _text.text = string.Empty;
+        _three.SetActive(false);
+        _two.SetActive(false);
+        _one.SetActive(false);
+        _go.SetActive(false);
     }
 
     public IEnumerator Execute()
     {
-        _text.text = "3";
+        _three.SetActive(true);
         yield return new WaitForSeconds(1.0f);
-        _text.text = "2";
+        _three.SetActive(false);
+        _two.SetActive(true);
         yield return new WaitForSeconds(1.0f);
-        _text.text = "1";
+        _two.SetActive(false);
+        _one.SetActive(true);
         yield return new WaitForSeconds(1.0f);
-        
+        _one.SetActive(false);
         // 適当な演出
-        _text.text = "スタート！";
+        _go.SetActive(true);
         Invoke(nameof(Delete), 1.0f);
     }
 
-    void Delete() => _text.text = string.Empty;
+    void Delete() => _go.SetActive(false);
 }

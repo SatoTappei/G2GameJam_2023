@@ -10,6 +10,9 @@ public class SceneChanger : MonoBehaviour
     [SerializeField] RawImage _image;
     [SerializeField] float _speed = 1.0f;
 
+    // TODO:シーンChangerにスコアを保持しているDDOL。名前を変える
+    public int Score;
+
     void Awake()
     {
         if (_instance == null)

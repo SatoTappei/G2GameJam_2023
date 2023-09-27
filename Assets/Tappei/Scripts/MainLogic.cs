@@ -12,6 +12,7 @@ public class MainLogic : MonoBehaviour
 
     [SerializeField] CountDown _countDown;
     [SerializeField] GameTimer _gameTimer;
+    [SerializeField] GameEnd _gameEnd;
     [SerializeField] Car _car;
     
     float _timer;
@@ -34,10 +35,19 @@ public class MainLogic : MonoBehaviour
             // タイマー更新
             _gameTimer.Tick(_timer);
 
+            // がめおべら
+            if (_car.IsDead) 
+            {
+                _gameEnd.GameOver();
+                OnGameOver?.Invoke();
+                yield break; 
+            }
+
             _timer += Time.deltaTime;
             yield return null;
         }
-        
+
+        _gameEnd.GameClear();
         // ゲームクリアのコールバック
         OnGameClear?.Invoke();
     }
