@@ -36,7 +36,7 @@ public class MileageInt : MonoBehaviour
     void Update()
     {
         _timer += Time.deltaTime;
-        if (true)         //_flag)
+        if (_flag)
         {
             if (_timer > 1)
             {
