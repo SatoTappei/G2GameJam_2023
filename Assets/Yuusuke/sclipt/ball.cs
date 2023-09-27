@@ -6,7 +6,7 @@ using UnityEngine;
 public class Ball : MonoBehaviour
 {
     [SerializeField, Header("ボールのスピード")] float _ballSpead;
-    [SerializeField] cannon _cannon;
+    [SerializeField, Header("大砲のプレハブ")] cannon _cannon;
     [SerializeField, Header("ボールの到達地点")] Transform[] _ballPoint;
 
     [SerializeField, Header("爆発エフェクト")] GameObject _effect;
@@ -26,6 +26,7 @@ public class Ball : MonoBehaviour
 
     void Update()
     {
+        //_startPosから_ballPoint[_random].positionまで行く。_nowPosで目標地点までを％で表す
         transform.position = Vector3.Lerp(_startPos,_ballPoint[_random].position , _nowPos);
         _nowPos += Time.deltaTime;
         _nowPos = Mathf.Clamp01(_nowPos);
@@ -33,13 +34,8 @@ public class Ball : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player"))
-        {
-            GameObject effect = Instantiate(_effect, this.transform.position, transform.rotation);
-            Destroy(effect, _effectTime);
-            Destroy(gameObject);
-        }
-        if (collision.CompareTag($"point{_random +1}"))
+        //プレイヤーか目標地点に到着したらボールを破壊してエフェクトを出す
+        if (collision.CompareTag("Player")|| collision.CompareTag($"point{_random + 1}"))
         {
             GameObject effect = Instantiate(_effect, this.transform.position, transform.rotation);
             Destroy(effect, _effectTime);

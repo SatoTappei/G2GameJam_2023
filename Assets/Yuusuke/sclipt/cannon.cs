@@ -6,26 +6,26 @@ using UnityEngine;
 public class cannon : MonoBehaviour
 {
     [SerializeField, Header("弾の発射場所")] Transform _muzzle;
-    [SerializeField] GameObject[] _colorBall;
+    [SerializeField, Header("カラーボールのプレハブ")] GameObject[] _colorBall;
     //[SerializeField, Header("弾の着弾地点")] Transform[] _ballPoint;
     //public Transform[] BallPoint => _ballPoint;
 
-    // Start is called before the first frame update
     void Start()
     {
+        //真ん中より右に出現したら左を向く
         if (transform.position.x > 0)
         {
-            transform.localScale *= -1;
+            transform.localScale = new Vector3(-1, 1, 1);
         }
     }
 
-    // Update is called once per frame
     void Update()
     {
 
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        //プレイヤーを感知したら弾を撃つ
         if (_muzzle != null && collision.CompareTag("Player"))
         {
             int ball = Random.Range(0, _colorBall.Length);
@@ -33,6 +33,7 @@ public class cannon : MonoBehaviour
         }
     }
 
+    //弾を撃つ関数
     void CannonFire(int ball)
     {
         Instantiate(_colorBall[ball], _muzzle.position, _colorBall[ball].transform.rotation);
