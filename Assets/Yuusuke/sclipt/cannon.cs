@@ -10,7 +10,6 @@ public class cannon : MonoBehaviour
     //[SerializeField, Header("’e‚Ì’…’e’n“_")] Transform[] _ballPoint;
     //public Transform[] BallPoint => _ballPoint;
 
-    [SerializeField] bool _isLeft;
     // Start is called before the first frame update
     void Start()
     {

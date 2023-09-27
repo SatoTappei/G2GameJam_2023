@@ -139,3 +139,5 @@ MonoBehaviour:
   - {fileID: 6798284686223403134, guid: 1e5f49aef95fffd48a603f0c03e62f01, type: 3}
   - {fileID: 832879214905806917, guid: d9d06c24a80f4bc4aac468d10af01759, type: 3}
   - {fileID: 4424849662682412718, guid: a4b1d3c86ad75444c815b96313684fb5, type: 3}
+  _effect: {fileID: 0}
+  _effectTime: 1

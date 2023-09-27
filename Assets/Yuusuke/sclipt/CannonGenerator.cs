@@ -9,13 +9,13 @@ public class CannnonGenerator : MonoBehaviour
     [SerializeField] Transform[] _generatorPoint;
     int _cannonPosition;
 
-    // Start is called before the first frame update
+
     void Start()
     {
         
     }
 
-    // Update is called once per frame
+
     void Update()
     {
         
