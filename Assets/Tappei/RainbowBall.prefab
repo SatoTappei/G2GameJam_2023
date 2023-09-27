@@ -75,7 +75,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 32
   m_Sprite: {fileID: 21300000, guid: 433d2e22ba2b8724d8b8c5a0ad4db64c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -140,7 +140,7 @@ MonoBehaviour:
   - {fileID: 6798284686223403134, guid: 1e5f49aef95fffd48a603f0c03e62f01, type: 3}
   - {fileID: 832879214905806917, guid: d9d06c24a80f4bc4aac468d10af01759, type: 3}
   - {fileID: 4424849662682412718, guid: a4b1d3c86ad75444c815b96313684fb5, type: 3}
-  _effect: {fileID: 0}
+  _effect: {fileID: 1643121134850566545, guid: ed16c4fbb81497745b84ca0bef66724c, type: 3}
   _effectTime: 1
 --- !u!114 &-7106323687472462849
 MonoBehaviour:
@@ -154,3 +154,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fcd5157795f95d149a7f980dfa8c7a95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _tag: Player
