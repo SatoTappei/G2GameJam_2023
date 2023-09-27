@@ -41,10 +41,10 @@ GameObject:
   m_Component:
   - component: {fileID: 658425071297327104}
   - component: {fileID: 5803426925658465827}
-  - component: {fileID: 8425332238440626521}
   - component: {fileID: 158026653567056190}
+  - component: {fileID: 3385868308600286687}
   m_Layer: 0
-  m_Name: Cannon
+  m_Name: TestCannon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -118,23 +118,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &8425332238440626521
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2717854977814352198}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cadb3ddb260c2574f85f8480e6eef1c1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _muzzle: {fileID: 6840495006962455179}
-  _colorBall:
-  - {fileID: 5245323576206008387, guid: 408a92c5b11ea3d4e801ca24b8df38a1, type: 3}
-  - {fileID: 8547548554060822056, guid: 9b2eaa284f1e333428b4d4b4bd5f99c1, type: 3}
-  - {fileID: 124488406253893681, guid: 3d51875c67fcde442b9f5864a6234dda, type: 3}
 --- !u!61 &158026653567056190
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -180,3 +163,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 10, y: 2}
   m_EdgeRadius: 0
+--- !u!114 &3385868308600286687
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2717854977814352198}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cadb3ddb260c2574f85f8480e6eef1c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _muzzle: {fileID: 6840495006962455179}
+  _colorBall:
+  - {fileID: 8924396716337314060, guid: 71b06258a4ae3b74991a926250ea341f, type: 3}

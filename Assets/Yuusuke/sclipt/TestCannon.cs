@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public class cannon : MonoBehaviour
+public class TestCannon : MonoBehaviour
 {
     [SerializeField, Header("弾の発射場所")] Transform _muzzle;
     [SerializeField, Header("カラーボールのプレハブ")] GameObject[] _colorBall;
