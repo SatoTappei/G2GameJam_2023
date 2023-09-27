@@ -5,9 +5,9 @@ using UnityEngine;
 public class TreeSpawn : MonoBehaviour
 {
     [SerializeField] SpriteRenderer _tree;
+    [Header("スポーン位置(4つまで)")]
     [SerializeField] Transform[] _spawn;
     float timer;
-
 
     void Update()
     {
