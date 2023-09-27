@@ -59,7 +59,7 @@ public class BackGroundScroll : MonoBehaviour
         }
     }
 
-    float GearChange(int gear)
+    public float GearChange(int gear)
     {
         if (gear == 1)
             return _gearOne;
