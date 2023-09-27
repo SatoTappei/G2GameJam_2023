@@ -7,13 +7,11 @@ public class GameEnd : MonoBehaviour
 {
     [SerializeField] GameObject _gameClear;
     [SerializeField] GameObject _gameOver;
-    [SerializeField] Button _retryButton;
 
     void Awake()
     {
         _gameClear.SetActive(false);
         _gameOver.SetActive(false);
-        _retryButton.onClick.AddListener(Retry);
     }
 
     public void GameClear()
@@ -24,10 +22,5 @@ public class GameEnd : MonoBehaviour
     public void GameOver()
     {
         _gameOver.SetActive(true);
-    }
-
-    void Retry()
-    {
-        SceneChanger.SceneChange("InGame");
     }
 }

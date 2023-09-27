@@ -40,6 +40,9 @@ public class MainLogic : MonoBehaviour
             {
                 _gameEnd.GameOver();
                 OnGameOver?.Invoke();
+
+                yield return new WaitForSeconds(1.0f);
+                SceneChanger.SceneChange("Result");
                 yield break; 
             }
 
@@ -50,6 +53,10 @@ public class MainLogic : MonoBehaviour
         _gameEnd.GameClear();
         // ゲームクリアのコールバック
         OnGameClear?.Invoke();
+
+        // 1秒後にリザルトへ
+        yield return new WaitForSeconds(1.0f);
+        SceneChanger.SceneChange("Result");
     }
 
     IEnumerator GameClear()

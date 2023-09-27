@@ -21,20 +21,20 @@ public class Car : MonoBehaviour, IDamageable
 
     bool ArrivalLane => _lerpProgress >= 1;
 
-    public bool IsDead => _damage == 3;
+    public bool IsDead => _damage >= 3;
 
     void OnEnable()
     {
         MainLogic.OnGameStart += () => _isValid = true;
         MainLogic.OnGameClear += () => _isValid = false;
-        MainLogic.OnGameOver += () => _isValid = false;
+        MainLogic.OnGameOver += Dead;
     }
 
     void OnDisable()
     {
         MainLogic.OnGameStart -= () => _isValid = true;
         MainLogic.OnGameClear -= () => _isValid = false;
-        MainLogic.OnGameOver += () => _isValid = false;
+        MainLogic.OnGameOver -= Dead;
     }
 
     void Start()
