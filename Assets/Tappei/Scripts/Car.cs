@@ -112,16 +112,20 @@ public class Car : MonoBehaviour, IDamageable
         // TODO:ŽžŠÔ‚ª‚ ‚ê‚Î•Ê‚Ì”»•Ê•û–@‚É’¼‚·
         if (item.TryGetComponent(out ColorBall _))
         {
-            _gear = Mathf.Clamp(--_gear, 1, 3);
-            _damage = Mathf.Clamp(++_damage, 1, 3);
+            _gear--;
+            _damage++;
+            _gear = Mathf.Clamp(_gear, 1, 3);
+            _damage = Mathf.Clamp(_damage, 0, 3);
         }
         else if (item.TryGetComponent(out RainbowBall _))
         {
-            _gear = Mathf.Clamp(++_gear, 1, 3);
+            _gear++;
+            _gear = Mathf.Clamp(_gear, 1, 3);
         }
         else if (item.TryGetComponent(out WaterBall _))
         {
-            _damage = Mathf.Clamp(--_damage, 1, 3);
+            _damage--;
+            _damage = Mathf.Clamp(_damage, 0, 3);
         }
 
         _gearView.Change(_gear);
