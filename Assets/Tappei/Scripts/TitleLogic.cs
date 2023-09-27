@@ -12,11 +12,6 @@ public class TitleLogic : MonoBehaviour
         _titleButton.onClick.AddListener(ToInGame);
     }
 
-    void Update()
-    {
-        
-    }
-
     void ToInGame()
     {
         SceneChanger.SceneChange("InGame");

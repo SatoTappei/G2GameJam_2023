@@ -1054,6 +1054,7 @@ MonoBehaviour:
   _countDown: {fileID: 143328461}
   _gameTimer: {fileID: 143328463}
   _gameEnd: {fileID: 143328465}
+  _mileage: {fileID: 143328466}
   _car: {fileID: 1138364435}
 --- !u!1 &377693627
 GameObject:

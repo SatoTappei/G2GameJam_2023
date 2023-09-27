@@ -13,6 +13,7 @@ public class MainLogic : MonoBehaviour
     [SerializeField] CountDown _countDown;
     [SerializeField] GameTimer _gameTimer;
     [SerializeField] GameEnd _gameEnd;
+    [SerializeField] MileageInt _mileage;
     [SerializeField] Car _car;
     
     float _timer;
@@ -41,6 +42,8 @@ public class MainLogic : MonoBehaviour
                 _gameEnd.GameOver();
                 OnGameOver?.Invoke();
 
+                SceneChanger.Score = _mileage.Mileage;
+                SceneChanger.IsGameOver = true;
                 yield return new WaitForSeconds(1.0f);
                 SceneChanger.SceneChange("Result");
                 yield break; 
@@ -54,6 +57,8 @@ public class MainLogic : MonoBehaviour
         // ゲームクリアのコールバック
         OnGameClear?.Invoke();
 
+        SceneChanger.Score = _mileage.Mileage;
+        SceneChanger.IsGameOver = false;
         // 1秒後にリザルトへ
         yield return new WaitForSeconds(1.0f);
         SceneChanger.SceneChange("Result");

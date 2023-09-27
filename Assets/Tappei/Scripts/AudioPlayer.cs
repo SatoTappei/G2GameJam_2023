@@ -8,13 +8,11 @@ using UnityEngine;
 /// </summary>
 public enum AudioType
 {
-    SE_CarRun,
     SE_GameOver,
-    SE_People,
     SE_RaceStart,
     SE_SubmitUI,
-    SE_Whistle,
-    SE_Whistle_Auto,
+    SE_CountDown,
+    SE_Finish,
 }
 
 /// <summary>
@@ -61,6 +59,11 @@ public class AudioPlayer : MonoBehaviour
         {
             Destroy(this);
         }
+    }
+
+    void OnDisable()
+    {
+        _audioDict.Clear();
     }
 
     void Init(GameObject go)

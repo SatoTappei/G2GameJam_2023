@@ -11,7 +11,20 @@ public class SceneChanger : MonoBehaviour
     [SerializeField] float _speed = 1.0f;
 
     // TODO:シーンChangerにスコアを保持しているDDOL。名前を変える
-    public int Score;
+    int _score;
+    bool _isGameOver;
+
+    public static int Score
+    {
+        get => _instance._score;
+        set => _instance._score = value;
+    }
+
+    public static bool IsGameOver
+    {
+        get => _instance._isGameOver;
+        set => _instance._isGameOver = value;
+    }
 
     void Awake()
     {

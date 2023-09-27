@@ -21,6 +21,7 @@ public class CountDown : MonoBehaviour
     public IEnumerator Execute()
     {
         _three.SetActive(true);
+        AudioPlayer.Instance.PlaySE(AudioType.SE_RaceStart);
         yield return new WaitForSeconds(1.0f);
         _three.SetActive(false);
         _two.SetActive(true);
