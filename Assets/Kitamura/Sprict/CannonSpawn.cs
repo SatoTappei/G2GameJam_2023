@@ -10,13 +10,29 @@ public class CannonSpawn : MonoBehaviour
     [Header("ƒXƒ|[ƒ“•p“x(•b)")]
     [SerializeField] float _coolTime = 0;
     float timer;
+    bool flag = false;
+
+    void OnEnable()
+    {
+        MainLogic.OnGameStart += () => flag = true;
+        MainLogic.OnGameClear += () => flag = false;
+    }
+
+    private void OnDisable()
+    {
+        MainLogic.OnGameStart -= () => flag = true;
+        MainLogic.OnGameClear -= () => flag = false;
+    }
     void Update()
     {
-        timer += Time.deltaTime;
-        if (timer > _coolTime)
+        if (flag)
         {
-            timer = 0;
-            Instantiate(_cannon, _spawn[Random.Range(0, 2)].position, transform.rotation);
+            timer += Time.deltaTime;
+            if (timer > _coolTime)
+            {
+                timer = 0;
+                Instantiate(_cannon, _spawn[Random.Range(0, 2)].position, transform.rotation);
+            }
         }
     }
 }
