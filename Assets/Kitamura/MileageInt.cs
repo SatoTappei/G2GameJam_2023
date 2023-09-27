@@ -35,12 +35,15 @@ public class MileageInt : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (_flag)
+        _timer += Time.deltaTime;
+        if (true)         //_flag)
         {
-            _timer += Time.deltaTime;
-            float scrollspeed = _backGroundScroll.ScrollSpeed;
-            _mileage += (int)(scrollspeed * _timer);
-            _mileageText.text = _mileage.ToString();
+            if (_timer > 1)
+            {
+                _mileage += (int)_backGroundScroll.ScrollSpeed;
+                _timer = 0;
+            }
         }
+        _mileageText.text = _mileage.ToString();
     }
 }
