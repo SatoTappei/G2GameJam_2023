@@ -22,6 +22,8 @@ public class BackGroundScroll : MonoBehaviour
     [SerializeField] int _gearThree;
 
     public float ScrollSpeed => _scrollSpeed;
+    public int Gear { set => _gear = value; }
+
     void Start()
     {
         //Å‰‚ÌˆÊ’u
@@ -59,7 +61,7 @@ public class BackGroundScroll : MonoBehaviour
         }
     }
 
-    public float GearChange(int gear)
+    float GearChange(int gear)
     {
         if (gear == 1)
             return _gearOne;

@@ -6,7 +6,7 @@ public class TreeSpawn : MonoBehaviour
 {
     [SerializeField] SpriteRenderer _tree;
     [Header("スポーン位置(4つまで)")]
-    [SerializeField] Transform[] _spawn;
+    [SerializeField] Transform[] _spawn = new Transform[4];
     float timer;
 
     void Update()
