@@ -17,12 +17,14 @@ public class CannonSpawn : MonoBehaviour
     {
         MainLogic.OnGameStart += () => flag = true;
         MainLogic.OnGameClear += () => flag = false;
+        MainLogic.OnGameOver += () => flag = false;
     }
 
     private void OnDisable()
     {
         MainLogic.OnGameStart -= () => flag = true;
         MainLogic.OnGameClear -= () => flag = false;
+        MainLogic.OnGameOver -= () => flag = false;
     }
 
     void Start()
