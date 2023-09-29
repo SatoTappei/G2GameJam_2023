@@ -7,6 +7,9 @@ TagManager:
   - point1
   - point2
   - point3
+  - Color
+  - Rainbow
+  - Water
   layers:
   - Default
   - TransparentFX

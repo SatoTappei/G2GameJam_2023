@@ -1,6 +1,5 @@
 using System.Collections;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class CountDown : MonoBehaviour
 {
@@ -12,6 +11,11 @@ public class CountDown : MonoBehaviour
 
     void Awake()
     {
+        InvalidAll();
+    }
+
+    void InvalidAll()
+    {
         _three.SetActive(false);
         _two.SetActive(false);
         _one.SetActive(false);
@@ -20,8 +24,9 @@ public class CountDown : MonoBehaviour
 
     public IEnumerator Execute()
     {
-        _three.SetActive(true);
         AudioPlayer.Instance.PlaySE(AudioType.SE_RaceStart);
+
+        _three.SetActive(true);
         yield return new WaitForSeconds(1.0f);
         _three.SetActive(false);
         _two.SetActive(true);
@@ -30,10 +35,11 @@ public class CountDown : MonoBehaviour
         _one.SetActive(true);
         yield return new WaitForSeconds(1.0f);
         _one.SetActive(false);
-        // 適当な演出
         _go.SetActive(true);
-        Invoke(nameof(Delete), 1.0f);
+
+        // 1秒後に非表示にするが、待たない
+        Invoke(nameof(Invalid), 1.0f);
     }
 
-    void Delete() => _go.SetActive(false);
+    void Invalid() => _go.SetActive(false);
 }

@@ -2,6 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum DamageStep
+{
+    One = 1,
+    Two = 2,
+    Three = 3,
+    Dead = 4, // ‚ª‚ß‚¨‚×‚ç
+}
+
 public class DamageView : MonoBehaviour
 {
     [SerializeField] GameObject _condition1;
@@ -20,12 +28,24 @@ public class DamageView : MonoBehaviour
         _condition3.SetActive(false);
     }
 
-    public void Condition(int value)
+    public void Condition(DamageStep damage)
     {
         InvalidAll();
 
-        if (value == 1) _condition1.SetActive(true);
-        if (value == 2) _condition2.SetActive(true);
-        if (value == 3) _condition3.SetActive(true);
+        if (damage == DamageStep.One)   _condition1.SetActive(true);
+        if (damage == DamageStep.Two)   _condition2.SetActive(true);
+        if (damage == DamageStep.Three) _condition3.SetActive(true);
+    }
+
+    public static DamageStep Increment(DamageStep step)
+    {
+        int value = (int)step;
+        return (DamageStep)Mathf.Clamp(++value, 1, 4);
+    }
+
+    public static DamageStep Decrement(DamageStep step)
+    {
+        int value = (int)step;
+        return (DamageStep)Mathf.Clamp(--value, 1, 4);
     }
 }

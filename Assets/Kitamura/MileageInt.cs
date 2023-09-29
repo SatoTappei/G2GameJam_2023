@@ -8,7 +8,7 @@ using static Unity.IO.LowLevel.Unsafe.AsyncReadManagerMetrics;
 public class MileageInt : MonoBehaviour
 {
     [SerializeField] Text _mileageText;
-    BackGroundScroll _backGroundScroll;
+    Scroll _backGroundScroll;
     int _mileage;
     float _timer;
     public int Mileage { get => _mileage; }
@@ -29,7 +29,7 @@ public class MileageInt : MonoBehaviour
     }
     void Start()
     {
-        _backGroundScroll = GetComponent<BackGroundScroll>();
+        _backGroundScroll = GetComponent<Scroll>();
     }
 
     // Update is called once per frame
@@ -40,8 +40,8 @@ public class MileageInt : MonoBehaviour
         {
             if (_timer > 1)
             {
-                _mileage += (int)_backGroundScroll.ScrollSpeed;
-                _timer = 0;
+                //_mileage += (int)_backGroundScroll.ScrollSpeed;
+                //_timer = 0;
             }
         }
         _mileageText.text = _mileage.ToString();

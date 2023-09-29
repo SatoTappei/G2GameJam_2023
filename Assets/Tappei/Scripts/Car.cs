@@ -1,12 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Car : MonoBehaviour, IDamageable
 {
+    // ギアが変更された際に呼ばれるコールバック
+    public static event UnityAction<GearStep> OnGearChanged;
+
     [SerializeField] GearView _gearView;
     [SerializeField] DamageView _damageView;
-    [SerializeField] BackGroundScroll _scroll;
     // 0:左 1:真ん中 2:右
     [SerializeField] Transform[] _lanes;
 
@@ -14,14 +17,13 @@ public class Car : MonoBehaviour, IDamageable
     int _currentLaneIndex;
     int _nextLaneIndex;
     float _lerpProgress = 1;
-    int _gear = 1;
-    int _damage;
+    GearStep _gear = GearStep.One;
+    DamageStep _damage = DamageStep.One;
     bool _isValid;
-    bool _isDead;
 
     bool ArrivalLane => _lerpProgress >= 1;
 
-    public bool IsDead => _damage >= 3;
+    public bool IsDead => _damage == DamageStep.Dead;
 
     void OnEnable()
     {
@@ -71,12 +73,14 @@ public class Car : MonoBehaviour, IDamageable
         {
             _nextLaneIndex = Mathf.Clamp(--_nextLaneIndex, 0, _lanes.Length - 1);
             _lerpProgress = 0;
+            AudioPlayer.Instance.PlaySE(AudioType.SE_Slide);
             return true;
         }
         else if (Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.D))
         {
             _nextLaneIndex = Mathf.Clamp(++_nextLaneIndex, 0, _lanes.Length - 1);
             _lerpProgress = 0;
+            AudioPlayer.Instance.PlaySE(AudioType.SE_Slide);
             return true;
         }
         else
@@ -112,29 +116,29 @@ public class Car : MonoBehaviour, IDamageable
 
     void IDamageable.Damage(GameObject item)
     {
-        if (_isDead) return;
+        if (IsDead) return;
 
-        // TODO:時間があれば別の判別方法に直す
-        if (item.TryGetComponent(out ColorBall _))
+        // 値の変更
+        if (item.CompareTag("Color"))
         {
-            _gear--;
-            _damage++;
-            _gear = Mathf.Clamp(_gear, 1, 3);
-            _damage = Mathf.Clamp(_damage, 0, 3);
+            _gear = GearView.Decrement(_gear);
+            _damage = DamageView.Increment(_damage);
+            _gearView.Change(_gear);
+            _damageView.Condition(_damage);
+            OnGearChanged?.Invoke(_gear);
         }
-        else if (item.TryGetComponent(out RainbowBall _))
+        else if (item.CompareTag("Rainbow"))
         {
-            _gear++;
-            _gear = Mathf.Clamp(_gear, 1, 3);
+            _gear = GearView.Increment(_gear);
+            _gearView.Change(_gear);
+            OnGearChanged?.Invoke(_gear);
         }
-        else if (item.TryGetComponent(out WaterBall _))
+        else if (item.CompareTag("Rainbow"))
         {
-            _damage--;
-            _damage = Mathf.Clamp(_damage, 0, 3);
+            _damage = DamageView.Decrement(_damage);
+            _damageView.Condition(_damage);
         }
 
-        _gearView.Change(_gear);
-        _damageView.Condition(_damage);
-        _scroll.Gear = _gear;
+        AudioPlayer.Instance.PlaySE(AudioType.SE_Damage);
     }
 }

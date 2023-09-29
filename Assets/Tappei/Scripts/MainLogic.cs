@@ -10,16 +10,21 @@ public class MainLogic : MonoBehaviour
     public static UnityAction OnGameOver;
     public static UnityAction OnGameClear;
 
+    [SerializeField] Scroll _scroll;
     [SerializeField] CountDown _countDown;
     [SerializeField] GameTimer _gameTimer;
-    [SerializeField] GameEnd _gameEnd;
-    [SerializeField] MileageInt _mileage;
     [SerializeField] Car _car;
-    
+    [SerializeField] GameObject _gameClear;
+    [SerializeField] GameObject _gameOver;
+    [SerializeField] Text _scoreText;
+    [SerializeField] AudioSource _audio;
+
     float _timer;
 
     void Start()
     {
+        _gameClear.SetActive(false);
+        _gameOver.SetActive(false);
         StartCoroutine(GameLoop());
     }
 
@@ -36,42 +41,56 @@ public class MainLogic : MonoBehaviour
             // タイマー更新
             _gameTimer.Tick(_timer);
 
-            // がめおべら
-            if (_car.IsDead) 
-            {
-                _gameEnd.GameOver();
-                OnGameOver?.Invoke();
+            // プレイヤーの死亡
+            if (_car.IsDead) break;
 
-                SceneChanger.Score = _mileage.Mileage;
-                SceneChanger.IsGameOver = true;
-                yield return new WaitForSeconds(1.0f);
-                SceneChanger.SceneChange("Result");
-                yield break; 
-            }
+            // テキストに反映
+            _scoreText.text = _scroll.Score.ToString("F2"); ;
 
             _timer += Time.deltaTime;
             yield return null;
         }
 
-        _gameEnd.GameClear();
-        // ゲームクリアのコールバック
-        OnGameClear?.Invoke();
+        // BGM
+        _audio.Stop();
 
-        SceneChanger.Score = _mileage.Mileage;
-        SceneChanger.IsGameOver = false;
-        // 1秒後にリザルトへ
-        yield return new WaitForSeconds(1.0f);
-        SceneChanger.SceneChange("Result");
+        // プレイヤーが死亡していた場合はがめおべら、それ以外はゲームクリア
+        if (_car.IsDead)
+        {
+            // がめおべら処理
+            GameOver();
+            OnGameOver?.Invoke();
+            Score(ResultType.GameOver);
+        }
+        else
+        {
+            // ゲームクリア処理
+            GameClear();
+            OnGameClear?.Invoke();
+            Score(ResultType.GameClear);
+        }
+
+        // 1.5秒後にリザルトへ
+        yield return new WaitForSeconds(1.5f);
+        GameManager.SceneChange("Result");
     }
 
-    IEnumerator GameClear()
+    void GameClear()
     {
-        yield return null;
+        _gameClear.SetActive(true);
+        AudioPlayer.Instance.PlaySE(AudioType.SE_Finish);
     }
 
-    IEnumerator GameOver()
+    void GameOver()
     {
-        yield return null;
+        _gameOver.SetActive(true);
+        AudioPlayer.Instance.PlaySE(AudioType.SE_GameOver);
+    }
+
+    void Score(ResultType type)
+    {
+        GameManager.Score = _scroll.Score;
+        GameManager.ResultType = type;
     }
 }
 

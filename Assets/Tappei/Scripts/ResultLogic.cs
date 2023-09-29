@@ -16,28 +16,30 @@ public class ResultLogic : MonoBehaviour
         _titleButton.onClick.AddListener(ToTitle);
         _retryButton.onClick.AddListener(ToInGame);
 
-        _text.text = SceneChanger.Score.ToString();
-        if (SceneChanger.IsGameOver)
+        _text.text = GameManager.Score.ToString("F2");
+        if (GameManager.ResultType == ResultType.GameClear)
         {
-            _clear.SetActive(false);
+            AudioPlayer.Instance.PlaySE(AudioType.SE_ResultGameClear);
+            _gameOver.SetActive(false);
         }
         else
         {
-            _gameOver.SetActive(false);
+            AudioPlayer.Instance.PlaySE(AudioType.SE_ResultGameOver);
+            _clear.SetActive(false);
         }
 
-        Debug.Log("今回のスコア:" + SceneChanger.Score);
+        Debug.Log("今回のスコア:" + GameManager.Score);
     }
 
     void ToTitle()
     {
-        SceneChanger.SceneChange("Title");
+        GameManager.SceneChange("Title");
         AudioPlayer.Instance.PlaySE(AudioType.SE_SubmitUI);
     }
 
     void ToInGame()
     {
-        SceneChanger.SceneChange("InGame");
+        GameManager.SceneChange("InGame");
         AudioPlayer.Instance.PlaySE(AudioType.SE_SubmitUI);
     }
 }

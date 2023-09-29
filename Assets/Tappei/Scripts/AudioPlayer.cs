@@ -13,6 +13,14 @@ public enum AudioType
     SE_SubmitUI,
     SE_CountDown,
     SE_Finish,
+    SE_Engine_1,
+    SE_Engine_2,
+    SE_Engine_3,
+    SE_Slide,
+    SE_Damage,
+    SE_Explosion,
+    SE_ResultGameOver,
+    SE_ResultGameClear,
 }
 
 /// <summary>

@@ -11,11 +11,10 @@ GameObject:
   - component: {fileID: 3162762240751171256}
   - component: {fileID: 7688469985355306171}
   - component: {fileID: 357419634975791294}
-  - component: {fileID: -7850187022628258775}
   - component: {fileID: -7106323687472462849}
   m_Layer: 0
   m_Name: RainbowBall
-  m_TagString: Untagged
+  m_TagString: Rainbow
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -122,26 +121,6 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
---- !u!114 &-7850187022628258775
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5245323576206008387}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 652f2024652808e49af35c0cb5f172b9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _ballSpead: 5
-  _cannon: {fileID: 8425332238440626521, guid: 3cfceff4ff0d4af4aa002118d8fdcdae, type: 3}
-  _ballPoint:
-  - {fileID: 6798284686223403134, guid: 1e5f49aef95fffd48a603f0c03e62f01, type: 3}
-  - {fileID: 832879214905806917, guid: d9d06c24a80f4bc4aac468d10af01759, type: 3}
-  - {fileID: 4424849662682412718, guid: a4b1d3c86ad75444c815b96313684fb5, type: 3}
-  _effect: {fileID: 1643121134850566545, guid: ed16c4fbb81497745b84ca0bef66724c, type: 3}
-  _effectTime: 1
 --- !u!114 &-7106323687472462849
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -154,4 +133,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fcd5157795f95d149a7f980dfa8c7a95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _tag: Player
+  _landingPoints:
+  - {x: -1.37, y: -3.32, z: 0}
+  - {x: 1.88, y: -1.42, z: 0}
+  - {x: 4.16, y: -3.24, z: 0}
+  - {x: -4.34, y: -3.39, z: 0}
+  - {x: -2.05, y: -1.33, z: 0}
+  - {x: 1.43, y: -3.42, z: 0}
+  - {x: -2.84, y: -2.27, z: 0}
+  - {x: -0.02, y: -2.24, z: 0}
+  - {x: 2.87, y: -2.2, z: 0}
+  _max: 0.75
+  _min: 0.33
+  _speed: 0.5
+  _explosion: {fileID: 1011252529995057508, guid: ed16c4fbb81497745b84ca0bef66724c, type: 3}
+  _layerMask:
+    serializedVersion: 2
+    m_Bits: 1

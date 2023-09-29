@@ -6,7 +6,7 @@ using UnityEngine;
 public class testBall : MonoBehaviour
 {
     [SerializeField, Header("ボールのスピード")] float _ballSpead;
-    [SerializeField, Header("大砲のプレハブ")] cannon _cannon;
+    //[SerializeField, Header("大砲のプレハブ")] Cannon _cannon;
     [SerializeField, Header("ボールの到達地点")] Transform[] _ballPoint;
 
     [SerializeField, Header("爆発エフェクト")] GameObject _effect;

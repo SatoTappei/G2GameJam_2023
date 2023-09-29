@@ -4,18 +4,18 @@ using UnityEngine;
 
 public class ItemsMoveDestroy : MonoBehaviour
 {
-    BackGroundScroll _backGroundScroll;
+    Scroll _backGroundScroll;
 
     protected virtual void MoveDestroy(){}
 
     void Start()
     {
-        _backGroundScroll = GameObject.Find("System").GetComponent<BackGroundScroll>();
+        _backGroundScroll = GameObject.Find("System").GetComponent<Scroll>();
     }
     void Update()
     {
         //背景スクロールの速度に合わせて移動
-        transform.Translate(0f, -_backGroundScroll.ScrollSpeed * Time.deltaTime, 0f);
+        //transform.Translate(0f, -_backGroundScroll.ScrollSpeed * Time.deltaTime, 0f);
         if (transform.position.y < -30f)
         {
             Destroy(gameObject);
